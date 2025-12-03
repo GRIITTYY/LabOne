@@ -196,7 +196,7 @@ void addStudent() {
 
 
         // Display Pass/Fail status
-        const char* status = (studentarray[totalStudents].marks > PASS_THRESHOLD) ? "PASS" : "FAIL";
+        const char* status = (studentarray[totalStudents].marks >= PASS_THRESHOLD) ? "PASS" : "FAIL";
         printf("Student Status: %s\n", status);
         totalStudents++;
         
@@ -355,7 +355,7 @@ void displayAllStudents() {
     printf("----------------------------------------------------------\n");
 
     for (int i = 0; i < totalStudents; i++) {
-        const char* status = (displayArray[i].marks > PASS_THRESHOLD) ? "Pass" : "Fail";
+        const char* status = (displayArray[i].marks >= PASS_THRESHOLD) ? "Pass" : "Fail";
         printf("%-8d | %-22s | %-6.2f | %s\n",
                displayArray[i].rollNumber,
                displayArray[i].name,
@@ -396,7 +396,7 @@ void searchStudent() {
     printf("Roll Number: %d\n", studentarray[index].rollNumber);
     printf("Name:        %s\n", studentarray[index].name);
     printf("Marks:       %.2f\n", studentarray[index].marks);
-    const char* status = (studentarray[index].marks > PASS_THRESHOLD) ? "Pass" : "Fail";
+    const char* status = (studentarray[index].marks >= PASS_THRESHOLD) ? "Pass" : "Fail";
     printf("Status:      %s\n", status);
     printf("----------------------\n");
 }
