@@ -335,10 +335,10 @@ void displayAllStudents() {
             // Sort the COPY
             if (order == 1) {
                 qsort(tempArray, totalStudents, sizeof(Student), compareAsc);
-                printf("\n(Displaying sorted by Marks: Ascending)\n");
+                printf("\n(Displaying in Ascending order of Marks)\n");
             } else {
                 qsort(tempArray, totalStudents, sizeof(Student), compareDesc);
-                printf("\n(Displaying sorted by Marks: Descending)\n");
+                printf("\n(Displaying in Descending of Marks)\n");
             }
             
             displayArray = tempArray;
