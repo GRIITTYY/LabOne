@@ -46,7 +46,7 @@ int findStudentByRoll(int roll);
 int main() {
     welcomeUser();
 
-    char option = '\0';
+    char option;
     do {
         showMenu();
 
