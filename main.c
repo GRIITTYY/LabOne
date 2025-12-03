@@ -104,7 +104,6 @@ int main() {
  * @brief Displays a welcome message and greets the user by name.
  */
 void welcomeUser() {
-    char name[50];
     printf("--- Welcome to the Student Record System ---\n");
     printf("Please enter your name: ");
     fgets(userName, sizeof(userName), stdin);
