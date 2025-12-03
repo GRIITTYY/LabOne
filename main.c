@@ -296,6 +296,7 @@ void modifyStudent() {
     }
 }
 
+
 /**
  * @brief Displays all student records currently in memory.
  */
@@ -307,7 +308,7 @@ void displayAllStudents() {
         return;
     }
 
-    // Ask for sorting preference
+    // Ask for sorting preference ---
     int order;
     printf("\nHow will you like the records to be displayed?\n");
     printf(" 1. Sort by Marks (in Ascending Order)\n");
@@ -321,30 +322,51 @@ void displayAllStudents() {
     }
     clearInputBuffer();
 
-    if (order == 1) {
-        qsort(studentarray, totalStudents, sizeof(Student), compareAsc);
-        printf("Displaying studentarray sorted in ascending order by marks.\n");
-    } else if (order == 2) {
-        qsort(studentarray, totalStudents, sizeof(Student), compareDesc);
-        printf("Displaying studentarray sorted in descending order by marks.\n");
-    }
-    // If 0, we do nothing and just print the list as-is.
+    // Setup COPIES
+    Student *displayArray = studentarray; 
+    Student *tempArray = NULL;            
 
-    // Printing the student table ---
+    if (order == 1 || order == 2) {
+        tempArray = malloc(totalStudents * sizeof(Student));
+        
+        if (tempArray != NULL) {
+            memcpy(tempArray, studentarray, totalStudents * sizeof(Student));
+            
+            // Sort the COPY
+            if (order == 1) {
+                qsort(tempArray, totalStudents, sizeof(Student), compareAsc);
+                printf("\n(Displaying sorted by Marks: Ascending)\n");
+            } else {
+                qsort(tempArray, totalStudents, sizeof(Student), compareDesc);
+                printf("\n(Displaying sorted by Marks: Descending)\n");
+            }
+            
+            displayArray = tempArray;
+        } else {
+            printf("\n - Displaying records as-is - \n");
+        }
+    } else {
+        printf("\n(Displaying records as-is)\n");
+    }
+
     printf("\n--- Displaying All Student Records ---\n");
     printf("----------------------------------------------------------\n");
     printf("Roll No. | Name                   | Marks  | Status\n");
     printf("----------------------------------------------------------\n");
 
     for (int i = 0; i < totalStudents; i++) {
-        const char* status = (studentarray[i].marks > PASS_THRESHOLD) ? "Pass" : "Fail";
+        const char* status = (displayArray[i].marks > PASS_THRESHOLD) ? "Pass" : "Fail";
         printf("%-8d | %-22s | %-6.2f | %s\n",
-               studentarray[i].rollNumber,
-               studentarray[i].name,
-               studentarray[i].marks,
+               displayArray[i].rollNumber,
+               displayArray[i].name,
+               displayArray[i].marks,
                status);
     }
     printf("----------------------------------------------------------\n\n");
+
+    if (tempArray != NULL) {
+        free(tempArray);
+    }
 }
 
 /**
