@@ -118,7 +118,7 @@ void welcomeUser() {
 void showMenu() {
     printf("\n==== Student Record System Menu ====\n");
     printf("A. Add a new student\n");
-    printf("D. Display all studentarray\n");
+    printf("D. Display all students\n");
     printf("M. Modify a student record\n");
     printf("R. Remove a student record\n");
     printf("S. Search for a student by roll number\n");
