@@ -218,7 +218,7 @@ void modifyStudent() {
     int roll;
     printf("\nEnter Roll Number of student to modify: ");
     if (scanf("%d", &roll) != 1) {
-        printf("Invalid input. Operation Aborted... \n");
+        printf("\nInvalid input, Please enter a valid number.\nOperation Aborted... \n");
         clearInputBuffer();
         return;
     }
@@ -242,7 +242,7 @@ void modifyStudent() {
 
     char choice;
     if (scanf(" %c", &choice) != 1) {
-        printf("\nInvalid input. Aborting modification.\n");
+        printf("\nInvalid input, Please enter a valid option.\nAborting modification.\n");
         clearInputBuffer();
         return;
     }
@@ -289,9 +289,9 @@ void modifyStudent() {
             printf("\nModification cancelled.\n");
             break;
         default:
-            printf("=======================================\n");
-            printf("Invalid choice. Operation Aborted...\n");
-            printf("=======================================\n\n");
+            printf("==============================================\n");
+            printf("Invalid choice. Please enter a valid option.\nOperation Aborted...\n");
+            printf("==============================================\n\n");
             break;
     }
 }
