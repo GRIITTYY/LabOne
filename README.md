@@ -9,6 +9,7 @@ This entire application is contained within a single `main.c` file, demonstratin
 The program provides a text-based menu with the following capabilities:
 
   * **A - Add Student:** Add a new student record (Roll Number, Name, Marks).
+    * **Note:** Students scoring above 50 marks are marked as **PASS**, otherwise **FAIL**.
   * **D - Display Students:** Display all current student records.
       * Provides sorting options:
         1.  Sort by Marks (Ascending)
@@ -22,7 +23,19 @@ The program provides a text-based menu with the following capabilities:
   * **S - Search Student:** Find and display a single student's details by their roll number.
   * **C - Calculate Average:** Calculate and display the average marks for all students.
   * **E - Save to File:** Save the current list of students to a user-specified filename.
-  * **L - Load from File:** Clear all current records and load a new set from a user-specified file.
+      This uses a structured plain-text format as shown below:
+      ```
+      <total_number_of_students>
+      <student_1_name>
+      <student_1_roll_number>
+      <student_1_marks>
+      <student_2_name>
+      <student_2_roll_number>
+      <student_2_marks>
+      ... 
+      ```
+  * **L - Load from File:** Load student records from a user-specified file and append them to the current list of students in-memory.
+      * **Note:** If a loaded student's roll number already exists in the system, it will be set to `-1` to prevent duplicates.
   * **Q - Quit:** Exit the program.
 
 ## 🔧 Getting Started
